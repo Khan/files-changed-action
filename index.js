@@ -12,11 +12,14 @@ if (!base) {
 }
 const cwd = process.cwd();
 
-const stdout = execSync(`git diff --name-only ${base} --relative`, {
-    cwd,
-    encoding: 'utf8',
-    rejectOnError: true,
-});
+const stdout = execSync(
+    `git diff --name-only refs/remotes/origin/${base} --relative`,
+    {
+        cwd,
+        encoding: 'utf8',
+        rejectOnError: true,
+    },
+);
 const files = stdout
     .split('\n')
     .filter(Boolean)

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@zeit/ncc": "^0.22.1"
+  }
+}

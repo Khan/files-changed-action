@@ -7,6 +7,9 @@ inputs:
   base:
     required: false
     description: 'The base ref to use (defaults to GITHUB_BASE_REF)'
+outputs:
+  files:
+    description: 'A list of the files that have changed, separated by :::'
 branding:
-  icon: check-circle
+  icon: file
   color: green

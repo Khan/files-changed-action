@@ -1017,6 +1017,8 @@ const files = stdout
     .filter((path) => (ignore ? !minimatch(path, ignore) : true))
     .filter((path) => (include ? minimatch(path, include) : true));
 
+console.log('Files changed:');
+files.forEach((file) => console.log('  ' + file));
 // ':' is an illegal character in filenames, so it makes a good delimeter
 setOutput('files', files.join(':::'));
 

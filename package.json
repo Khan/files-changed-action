@@ -1,8 +1,12 @@
 {
     "name": "files-changed-action",
     "private": true,
+"scripts": {
+"dist": "ncc build index.js"
+},
     "dependencies": {
         "@actions/core": "^1.2.4",
-        "@zeit/ncc": "^0.22.1"
+        "@zeit/ncc": "^0.22.1",
+        "minimatch": "^3.0.4"
     }
 }

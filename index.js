@@ -2,7 +2,10 @@ const { execSync } = require('child_process');
 const { getInput, setOutput } = require('@actions/core');
 const path = require('path');
 const fs = require('fs');
+const minimatch = require('minimatch');
 
+const ignore = getInput('ignore');
+const include = getInput('include');
 const base = getInput('base') || process.env.GITHUB_BASE_REF;
 if (!base) {
     console.error(
@@ -25,7 +28,9 @@ const files = stdout
     .filter(Boolean)
     .map((name) => path.join(cwd, name))
     // Filter out paths that were deleted
-    .filter((path) => fs.existsSync(path));
+    .filter((path) => fs.existsSync(path))
+    .filter((path) => (ignore ? !minimatch(path, ignore) : true))
+    .filter((path) => (include ? minimatch(path, include) : true));
 
 // ':' is an illegal character in filenames, so it makes a good delimeter
 setOutput('files', files.join(':::'));

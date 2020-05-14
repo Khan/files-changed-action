@@ -1,5 +1,7 @@
 const { execSync } = require('child_process');
 const { getInput, setOutput } = require('@actions/core');
+const path = require('path');
+const fs = require('fs');
 
 const base = getInput('base') || process.env.GITHUB_BASE_REF;
 if (!base) {
@@ -8,6 +10,7 @@ if (!base) {
     );
     process.exit(1);
 }
+const cwd = process.cwd();
 
 const stdout = execSync(`git diff --name-only ${base} --relative`, {
     cwd,

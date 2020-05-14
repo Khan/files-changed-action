@@ -1,6 +1,8 @@
 {
-  "dependencies": {
-    "@actions/core": "^1.2.4",
-    "@zeit/ncc": "^0.22.1"
-  }
+    "name": "files-changed-action",
+    "private": true,
+    "dependencies": {
+        "@actions/core": "^1.2.4",
+        "@zeit/ncc": "^0.22.1"
+    }
 }
